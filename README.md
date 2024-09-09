@@ -1,70 +1,132 @@
-# Getting Started with Create React App
+# ToneDresser - Color Palette and Outfit Generator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+ToneDresser é uma aplicação front-end que gera paletas de cores e looks de moda realistas com base em preferências e emoções fornecidas pelo usuário. Utilizando a API da OpenAI, a aplicação cria sugestões personalizadas de looks, fornecendo tanto descrições detalhadas quanto imagens estilizadas de roupas.
 
-## Available Scripts
+## Índice
 
-In the project directory, you can run:
+- [Visão Geral](#visão-geral)
+- [Funcionalidades](#funcionalidades)
+- [Pré-requisitos](#pré-requisitos)
+- [Instalação](#instalação)
+- [Como Usar](#como-usar)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [Contribuição](#contribuição)
+- [Licença](#licença)
 
-### `npm start`
+## Visão Geral
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**ToneDresser** é uma ferramenta inovadora para usuários que querem combinações perfeitas de cores e roupas para eventos e ocasiões específicas. Através de um simples formulário, os usuários inserem preferências pessoais, e a ToneDresser utiliza inteligência artificial para gerar:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- Paletas de cores.
+- Sugestões de looks de moda criativos.
+- Imagens realistas dos looks sugeridos.
 
-### `npm test`
+A aplicação usa a API do OpenAI para gerar conteúdo com base em texto e imagens, fornecendo uma interface agradável e intuitiva para qualquer pessoa que deseje looks exclusivos e bem combinados com base em suas necessidades.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Funcionalidades
 
-### `npm run build`
+- **Gerar Paletas de Cores**: Baseado em emoções, cores favoritas e estilos preferidos.
+- **Sugestão de Looks de Moda**: Descrições detalhadas de até três looks, incluindo sugestões formais e informais.
+- **Geração de Imagens Realistas**: Utilizando o modelo de geração de imagens do OpenAI para criar looks visualmente estilizados com base nas descrições e paletas de cores.
+- **Interface Responsiva**: Compatível com dispositivos móveis e desktop.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Pré-requisitos
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Antes de rodar o projeto, certifique-se de ter instalado:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **Node.js** (v12 ou superior)
+- **npm** (v6 ou superior)
+- Chave da API OpenAI (você pode criar uma conta no [OpenAI Platform](https://platform.openai.com/) e gerar uma chave de API)
 
-### `npm run eject`
+## Instalação
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Siga os passos abaixo para configurar o projeto localmente:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. Clone o repositório para sua máquina local:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    ```bash
+    git clone https://github.com/seuusuario/tonedresser.git
+    cd tonedresser
+    ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Instale as dependências do projeto:
 
-## Learn More
+    ```bash
+    npm install
+    ```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+3. Crie um arquivo `.env` na raiz do projeto com a chave da API do OpenAI:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    ```bash
+    REACT_APP_OPENAI_API_KEY=your_openai_api_key
+    ```
 
-### Code Splitting
+4. Inicie o servidor de desenvolvimento:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    ```bash
+    npm start
+    ```
 
-### Analyzing the Bundle Size
+A aplicação estará disponível em `http://localhost:3000`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Como Usar
 
-### Making a Progressive Web App
+1. Abra a aplicação no seu navegador e preencha o formulário de preferências de cores, estilo e emoção.
+2. Clique no botão "Gerar Paleta de Cores".
+3. Após o processamento, a aplicação exibirá a paleta de cores sugerida, as descrições de looks e as imagens correspondentes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+### Fluxo do Aplicativo
 
-### Advanced Configuration
+- O usuário fornece suas preferências através do formulário.
+- A aplicação faz uma requisição à API do OpenAI para gerar a paleta de cores e as descrições de looks.
+- A partir das descrições geradas, o aplicativo faz outra requisição para a API de geração de imagens do OpenAI para gerar imagens realistas dos looks descritos.
+- O resultado final, incluindo paletas e imagens, é exibido ao usuário.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Estrutura do Projeto
 
-### Deployment
+├── public 
+│
+└── index.html 
+  ├── src │ 
+  ├── components │ 
+  │ ├── PaletteForm.js │ 
+  │ ├── PaletteDisplay.js │ 
+  │ └── Suggestions.js │ 
+  ├── GlobalStyles.js │ 
+  ├── App.js │ 
+  └── index.js 
+  ├── .env 
+  ├── package.json 
+  └── README.md
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+  
+- **public/**: Contém o arquivo HTML base para a aplicação React.
+- **src/**: Contém o código-fonte da aplicação.
+    - **components/**: Contém os componentes React, como o formulário de entrada, exibição de paletas e sugestões.
+    - **GlobalStyles.js**: Estilos globais aplicados à aplicação.
+    - **App.js**: Componente principal que controla a lógica da aplicação.
+    - **index.js**: Arquivo de entrada que inicializa a aplicação React.
+- **.env**: Arquivo de configuração com a chave da API.
+- **package.json**: Contém as dependências e scripts de configuração do projeto.
 
-### `npm run build` fails to minify
+## Tecnologias Utilizadas
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **React.js**: Biblioteca para construção da interface do usuário.
+- **Styled Components**: Para estilização da aplicação de forma dinâmica e modular.
+- **OpenAI API**: Usada para gerar tanto descrições de looks quanto as imagens realistas dos looks baseados em cores.
+- **Axios**: Biblioteca para fazer requisições HTTP.
+
+## Contribuição
+
+Se você quiser contribuir para o projeto, siga os passos abaixo:
+
+1. Faça um fork do projeto.
+2. Crie uma branch para a sua feature (`git checkout -b feature/nova-feature`).
+3. Commit suas alterações (`git commit -am 'Adiciona nova feature'`).
+4. Envie para o branch principal (`git push origin feature/nova-feature`).
+5. Abra um Pull Request.
+
+## Licença
+
+Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](./LICENSE) para mais detalhes.
